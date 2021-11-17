@@ -1,4 +1,46 @@
 /* Your styles for the mobile/small screen view of the quiz go here*/
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-family: 'Yuji Syuku', serif;
+}
+
+body {
+	width: 80%;
+	margin: 40px auto;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+#category {
+	padding: 10px;
+	text-decoration: underline;
+}
+
+#game-board {
+	box-shadow: 10px 10px 10px lightblue;
+	padding: 5%;
+	border: 1px solid black;
+	margin-top: 20px;
+}
+
+#answer-box {
+	margin: 10px 0;
+}
+
+.answer {
+	list-style: lower-alpha;
+	padding-left: 10%;
+	margin-left: 10%;
+	cursor:pointer;
+}
+
 #next {
 	display: none;
 }
@@ -8,6 +50,10 @@
 }
 
 #add-form {
+	display: none;
+}
+
+#questions-box {
 	display: none;
 }
 

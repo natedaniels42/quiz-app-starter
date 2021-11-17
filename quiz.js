@@ -19,6 +19,7 @@ const gameOver = document.getElementById('game-over');
 const final = document.getElementById('final');
 const gameBoard = document.getElementById('game-board');
 const playAgain = document.getElementById('play-again');
+const category = document.getElementById('category');
 
 scoreNumber.innerHTML = score;
 
@@ -49,7 +50,8 @@ const buildQuestion = () => {
             answers[i].removeAttribute('style');
         }
         question.innerHTML = currentQuestion.question;
-        
+        category.innerHTML = currentQuestion.category[0].toUpperCase() + currentQuestion.category.substr(1);
+
         currentAnswers = currentQuestion.incorrectAnswers
         .concat(currentQuestion.correctAnswer);
         
@@ -70,13 +72,16 @@ const buildQuestion = () => {
 
 const answerListener = (event) => {
     if (event.target.innerHTML === currentQuestion.correctAnswer) {
-        event.target.style.backgroundColor = 'green';
+        event.target.innerHTML += `<img src="checkmark-16.png">`
         score++;
             scoreNumber.innerHTML = score;
     } else {
-        event.target.style.backgroundColor = 'red';
+        event.target.innerHTML += `<img src="red-x.png" width="16px">`;
     }
     next.style.display = 'contents';
+    for (let i = 0; i < answers.length; i++) {
+        answers[i].removeEventListener('click', answerListener);
+    }
 };
 
 next.addEventListener('click', (event) => {
@@ -84,19 +89,19 @@ next.addEventListener('click', (event) => {
     
     const answerListener = (event) => {
         if (event.target.innerHTML === currentQuestion.correctAnswer) {
-            event.target.style.backgroundColor = 'green';
+            event.target.innerHTML += `<img src="checkmark-16.png">`
             score++;
                 scoreNumber.innerHTML = score;
         } else {
-            event.target.style.backgroundColor = 'red';
+            event.target.innerHTML += `<img src="red-x.png" width="16px">`;
         }
         next.style.display = 'contents';
+        for (let i = 0; i < answers.length; i++) {
+            answers[i].removeEventListener('click', answerListener);
+        }
     };
 
-    for (let i = 0; i < answers.length; i++) {
-        answers[i].removeEventListener('click', answerListener);
-    }
-    
+    next.style.display = 'none';
     index++;
     buildQuestion();
 })
@@ -107,7 +112,7 @@ playAgain.addEventListener('click', (event) => {
     score = 0;
     index = 0;
     gameOver.style.display = 'none';
-    gameBoard.style.display = 'contents';
+    gameBoard.removeAttribute('style');
     playGame();
 })
 

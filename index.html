@@ -5,14 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!--Your quiz layout goes here-->
+    <nav>
+        <a href="admin.html">Add questions</a>
+    </nav>
     <h1>Trivia Game</h1>
     <p>Score: <span id="score"></span></p>
     <div id="game-board">
         <h2>Question: <span id="question-number"></span></h2>
+        <h3 id="category"></h3>
         <p id="question"></p>
         <ul id="answer-box">
             <li id="answer1" class="answer"></li>

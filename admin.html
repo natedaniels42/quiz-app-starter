@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Edit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="questions.js" defer></script>
     <script src="builder.js" defer></script>
@@ -23,6 +26,9 @@
             <label for="category">Category: </label>
             <select name="category">
                 <option value="geography">Geography</option>
+                <option value="history">History</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="animal">Animal</option>
             </select><br>
             <label for="correct">Correct Answer: </label>
             <input type="text" name="correctAnswer"><br>
@@ -34,8 +40,10 @@
             <input type="text" name="incorrect3"><br>
             <button id="add">Add Question</button>
         </form>
-        <h2>Questions</h2>
-        <div id="question-box"></div>
+        <div id="question-box">
+            <h2>Questions</h2>
+            
+        </div>
     </main>
 </body>
 </html>
