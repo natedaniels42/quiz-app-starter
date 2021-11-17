@@ -82,7 +82,12 @@ const answerListener = (event) => {
         score++;
             scoreNumber.innerHTML = score;
     } else {
-        event.target.innerHTML += `<img src="red-x.png" width="16px">`;
+        for (let i = 0; i < answers.length; i++) {
+            if (answers[i].innerHTML === currentQuestion.correctAnswer) {
+                answers[i].innerHTML += `<img src="red-x.png" width="16px">`;
+
+            }
+        }
     }
     next.style.visibility = 'visible';
     for (let i = 0; i < answers.length; i++) {
@@ -99,7 +104,14 @@ next.addEventListener('click', (event) => {
             score++;
                 scoreNumber.innerHTML = score;
         } else {
-            event.target.innerHTML += `<img src="red-x.png" width="16px">`;
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i].innerHTML === currentQuestion.correctAnswer) {
+                    answers[i].innerHTML += `<img src="red-x.png" width="16px">`;
+
+                }
+            
+
+            }
         }
         next.style.visibility = 'visible';
         for (let i = 0; i < answers.length; i++) {
