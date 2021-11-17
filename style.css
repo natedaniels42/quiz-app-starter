@@ -7,6 +7,9 @@
 	display: none;
 }
 
+#add-form {
+	display: none;
+}
 
 @media all and (min-width: 600px){
 	/* Your styles for the desktop view go here */
