@@ -20,6 +20,7 @@ const final = document.getElementById('final');
 const gameBoard = document.getElementById('game-board');
 const playAgain = document.getElementById('play-again');
 const category = document.getElementById('category');
+const start = document.getElementById('start');
 
 scoreNumber.innerHTML = score;
 
@@ -39,7 +40,12 @@ const shuffler = (num) => {
 
 
 console.log(currentQuestions);
+start.addEventListener('click', (event) => {
+    event.preventDefault();
 
+    gameBoard.style.visibility = 'visible';
+    start.style.visibility = 'hidden';
+})
 
 const buildQuestion = () => {
     if (index < 5) {
@@ -63,8 +69,8 @@ const buildQuestion = () => {
             answers[i].addEventListener('click', answerListener);
         }
     } else {
-        gameOver.style.display = 'contents';
-        gameBoard.style.display = 'none';
+        gameOver.style.visibility = 'visible';
+        gameBoard.style.visibility = 'hidden';
         final.innerHTML = score;
     }
     
@@ -78,7 +84,7 @@ const answerListener = (event) => {
     } else {
         event.target.innerHTML += `<img src="red-x.png" width="16px">`;
     }
-    next.style.display = 'contents';
+    next.style.visibility = 'visible';
     for (let i = 0; i < answers.length; i++) {
         answers[i].removeEventListener('click', answerListener);
     }
@@ -95,13 +101,13 @@ next.addEventListener('click', (event) => {
         } else {
             event.target.innerHTML += `<img src="red-x.png" width="16px">`;
         }
-        next.style.display = 'contents';
+        next.style.visibility = 'visible';
         for (let i = 0; i < answers.length; i++) {
             answers[i].removeEventListener('click', answerListener);
         }
     };
 
-    next.style.display = 'none';
+    next.style.visibility = 'hidden';
     index++;
     buildQuestion();
 })
@@ -111,8 +117,8 @@ playAgain.addEventListener('click', (event) => {
     
     score = 0;
     index = 0;
-    gameOver.style.display = 'none';
-    gameBoard.removeAttribute('style');
+    gameOver.style.visibility = 'hidden';
+    gameBoard.style.visibility = 'visible';
     playGame();
 })
 

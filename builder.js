@@ -4,6 +4,7 @@ const inputs = document.querySelectorAll('input');
 const create = document.getElementById('create');
 const add = document.getElementById('add');
 const questionBox = document.getElementById('question-box'); 
+const error = document.getElementById('error');
 let currentQuestions = JSON.parse(sessionStorage.questions);
 
 console.log(currentQuestions);
@@ -54,7 +55,11 @@ addForm.addEventListener('submit', (event) => {
             for (let i = 0; i < inputs.length; i++) {
                 inputs[i].value = '';
             }
+
+            error.innerHTML = '';
             addForm.style.display = 'none';
-            create.style.display = 'contents';
+            create.removeAttribute('style');
+        } else {
+            error.innerHTML = 'All fields are required';
         }
 })
