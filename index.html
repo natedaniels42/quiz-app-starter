@@ -10,16 +10,23 @@
 <body>
     <!--Your quiz layout goes here-->
     <h1>Trivia Game</h1>
-    <h2>Question: <span id="question-number"></span></h2>
-    <p id="question"></p>
-    <ul id="answer-box">
-        <li id="answer1" class="answer"></li>
-        <li id="answer2" class="answer"></li>
-        <li id="answer3" class="answer"></li>
-        <li id="answer4" class="answer"></li>
-    </ul>
+    <p>Score: <span id="score"></span></p>
+    <div id="game-board">
+        <h2>Question: <span id="question-number"></span></h2>
+        <p id="question"></p>
+        <ul id="answer-box">
+            <li id="answer1" class="answer"></li>
+            <li id="answer2" class="answer"></li>
+            <li id="answer3" class="answer"></li>
+            <li id="answer4" class="answer"></li>
+        </ul>
+        <button id="next">Next</button>
+    </div>
+    <div id="game-over">
+        <p>You got <span id="final"></span>/5 correct</p>
+        <button id="play-again">Play Again?</button>
+    </div>
     <script src="questions.js"></script>
-    <script src="builder.js"></script>
     <script src="quiz.js"></script>
 </body>
 </html>

@@ -31,3 +31,7 @@ const questions = [
         incorrectAnswers: ['Monaco', 'Liechtenstein', 'Maldives']
     },
 ]
+if (!sessionStorage.questions) {
+    sessionStorage.questions = JSON.stringify(questions);
+
+}

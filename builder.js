@@ -1,36 +1,24 @@
 /* your quiz builder functionality goes here */
+const addForm = document.getElementById('add-form');
+const inputs = document.querySelectorAll('input');
 
-
-
-let index = 0;
-
-const answerBox = document.getElementById('answer-box');
-const question = document.getElementById('question');
-const answers = document.getElementsByClassName('answer');
-
-const shuffler = (type = 'a') => {
-    const indexArr = [];
+addForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const currentQuestions = JSON.parse(sessionStorage.questions);
     
-    while (indexArr.length < 4) {
-        const randomIndex = Math.floor(Math.random() * (type === 'q' ? questions.length : 4));
-        
-        if (!indexArr.includes(randomIndex)) {
-            indexArr.push(randomIndex);
-        }
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    
+    const incorrect = [data.incorrect1, data.incorrect2, data.incorrect3];
+    delete data.incorrect1;
+    delete data.incorrect2;
+    delete data.incorrect3;
+    data.incorrectAnswers = incorrect;
+
+    currentQuestions.push(data);
+    console.log(currentQuestions);
+    sessionStorage.questions = JSON.stringify(currentQuestions);
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
     }
-    return indexArr;
-}
-
-const questionIndices = shuffler('q');
-const answerIndices = shuffler();
-
-
-question.innerHTML = questions[questionIndices[index]].question;
-
-currentAnswers = questions[questionIndices[index]].incorrectAnswers
-    .concat(questions[questionIndices[index]].correctAnswer);
-
-for (let i = 0; i < answers.length; i++) {
-    answers[i].innerHTML = currentAnswers[answerIndices[i]];
-
-}
+})

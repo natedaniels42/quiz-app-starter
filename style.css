@@ -1,5 +1,11 @@
 /* Your styles for the mobile/small screen view of the quiz go here*/
+#next {
+	display: none;
+}
 
+#game-over {
+	display: none;
+}
 
 
 @media all and (min-width: 600px){

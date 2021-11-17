@@ -1,0 +1,38 @@
+<!-- Your quiz builder UI goes here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Edit</title>
+    <script src="questions.js" defer></script>
+    <script src="builder.js" defer></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Back to Game</a>
+    </nav>
+    <main>
+        <h1>Question Editor</h1>
+        <button id="create">Create Question</button>
+        <form id="add-form">
+            <label for="question">Question: </label>
+            <input type="text" name="question"><br>
+            <label for="category">Category: </label>
+            <select name="category">
+                <option value="geography">Geography</option>
+            </select><br>
+            <label for="correct">Correct Answer: </label>
+            <input type="text" name="correctAnswer"><br>
+            <label for="incorrect1">Incorrect Answer1: </label>
+            <input type="text" name="incorrect1"><br>
+            <label for="incorrect2">Incorrect Answer2: </label>
+            <input type="text" name="incorrect2"><br>
+            <label for="incorrect3">Incorrect Answer3: </label>
+            <input type="text" name="incorrect3"><br>
+            <button id="add">Add Question</button>
+        </form>
+    </main>
+</body>
+</html>
