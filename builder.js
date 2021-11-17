@@ -1,5 +1,4 @@
 /* your quiz builder functionality goes here */
-const questionIndices = [];
 
 
 
@@ -9,23 +8,29 @@ const answerBox = document.getElementById('answer-box');
 const question = document.getElementById('question');
 const answers = document.getElementsByClassName('answer');
 
-while (questionIndices.length < 5) {
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    if (!questionIndices.includes(randomIndex)) {
-        questionIndices.push(randomIndex);
+const shuffler = (type = 'a') => {
+    const indexArr = [];
+    
+    while (indexArr.length < 4) {
+        const randomIndex = Math.floor(Math.random() * (type === 'q' ? questions.length : 4));
+        
+        if (!indexArr.includes(randomIndex)) {
+            indexArr.push(randomIndex);
+        }
     }
+    return indexArr;
 }
 
-console.log(questionIndices)
+const questionIndices = shuffler('q');
+const answerIndices = shuffler();
+
 
 question.innerHTML = questions[questionIndices[index]].question;
 
+currentAnswers = questions[questionIndices[index]].incorrectAnswers
+    .concat(questions[questionIndices[index]].correctAnswer);
 
 for (let i = 0; i < answers.length; i++) {
-    if (i === 3) {
-        console.log('works');
-        answers[i].innerHTML = questions[questionIndices[index]].correctAnswer;
-    } else {
-        answers[i].innerHTML = questions[questionIndices[index]].incorrectAnswers[i];
-    }
+    answers[i].innerHTML = currentAnswers[answerIndices[i]];
+
 }
