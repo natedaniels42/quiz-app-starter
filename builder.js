@@ -5,9 +5,11 @@ const create = document.getElementById('create');
 const add = document.getElementById('add');
 const questionBox = document.getElementById('question-box'); 
 const error = document.getElementById('error');
+const deleteButton = document.getElementsByClassName('delete');
 let currentQuestions = JSON.parse(sessionStorage.questions);
 
 console.log(currentQuestions);
+
 currentQuestions.forEach(question => {
     const questionDiv = document.createElement('div');
     const incorrect = question.incorrectAnswers.map(answer => `<p>Incorrect: ${answer}</p>`)
@@ -15,14 +17,16 @@ currentQuestions.forEach(question => {
     <p>Category: ${question.category}
     <p>Correct Answer: ${question.correctAnswer}</p>
     ${incorrect.join('')}
-    <button class="edit">Edit</button><button class="delete">Delete</button>`;
+    <button class="delete">Delete</button>`;
     questionBox.appendChild(questionDiv);
-    document.querySelector('.delete').addEventListener('click', (event) => {
+    questionDiv.children[6].addEventListener('click', (event) => {
         event.preventDefault();
 
-        const current = event.target.closest('div').children[0].children[0].innerHTML;
+        let current = questionDiv.children[0].children[0].innerHTML;
+        console.log(current);
         currentQuestions = currentQuestions.filter(question => question.question !== current);
-        sessionStorage.questions = currentQuestions;
+        sessionStorage.questions = JSON.stringify(currentQuestions);
+        console.log(currentQuestions);
     })
 })
 
@@ -63,3 +67,4 @@ addForm.addEventListener('submit', (event) => {
             error.innerHTML = 'All fields are required';
         }
 })
+

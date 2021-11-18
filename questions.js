@@ -61,7 +61,7 @@ const questions = [
         incorrectAnswers: ['Tutankhamen', 'Nefertiti', 'Cheops']
     },
     {
-        question: 'What was the name of the band that sang the "riends" theme song?',
+        question: 'What was the name of the band that sang the "Friends" theme song?',
         category: 'entertainment',
         correctAnswer: 'The Rembrandts',
         incorrectAnswers: ['Weezer', 'Pearl Jam', 'Nirvana']
